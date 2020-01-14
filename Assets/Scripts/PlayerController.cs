@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
         horizontal = (player == 1) ? "Horizontal" : "Horizontal2";
         vertical = (player == 1) ? "Vertical" : "Vertical2";
     }
+
     void Update()
     {
         movement.x = Input.GetAxisRaw(horizontal);
