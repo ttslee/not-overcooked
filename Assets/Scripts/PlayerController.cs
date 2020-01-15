@@ -14,9 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Rigidbody2D playerBody;
 
-    private GameObject item;
+    private Transform item;
 
-    public GameObject Item
+    public Transform Item
     {
         get
         {
@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
             item = value;
         }
     }
-
 
     private bool isHoldingItem = false;
 
@@ -55,6 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw(horizontal);
         movement.y = Input.GetAxisRaw(vertical);
+        
         if (movement.x == -1)
         {
             transform.localRotation = Quaternion.Euler(0, 180, 0);
@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         playerBody.MovePosition(playerBody.position + movement * moveSpd * Time.fixedDeltaTime);
+        setItemPosition();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -96,13 +97,29 @@ public class PlayerController : MonoBehaviour
 
     private void PickUp(Collider2D collision)
     {
-        item = collision.GetComponent<GameObject>();
-
-        Vector2 pos = item.GetComponent<Rigidbody2D>().position;
-
-        if(movement.x == -1)
+        Item = collision.gameObject.transform;
+        Item.parent = transform;
+        setItemPosition();
+    }
+    private void setItemPosition()
+    {
+        if (Item == null)
+            return;
+        if (movement.y == 1)
         {
-
+            Item.localPosition = new Vector3(0, .7f, 1f);
+        }
+        else if (movement.y == -1)
+        {
+            Item.localPosition = new Vector3(0, -.4f, 1f);
+        }
+        else if (movement.x == -1)
+        {
+            Item.localPosition = new Vector3(-.7f, 0, 1f);
+        }
+        else if (movement.x == 1)
+        {
+            Item.localPosition = new Vector3(.4f, 0, 1f);
         }
     }
 }
