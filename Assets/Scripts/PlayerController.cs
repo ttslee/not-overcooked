@@ -5,19 +5,15 @@ public class PlayerController : MonoBehaviour
     //Player
     public int player = 1;
 
-    //Movement/Animation/Pickup
+    //Movement/Animation
     public Animator animator;
     Vector2 movement;
-
-    [SerializeField]
-    private float moveSpd = 1f;
+    public float moveSpd = 1f;
     private string horizontal, vertical;
+    public Rigidbody2D playerBody;
 
-    [SerializeField]
-    private Rigidbody2D playerBody;
-
+    //Item Pickup
     private GameObject it;
-
     private Transform item;
 
     public Transform Item
@@ -61,10 +57,10 @@ public class PlayerController : MonoBehaviour
         movement = movement.normalized;
 
         animator.SetFloat("Speed", movement.sqrMagnitude);
-        if (movement.x == -1)
+        if (movement.x < 0)
         {
             transform.localRotation = Quaternion.Euler(0, 180, 0);
-        } else if (movement.x == 1)
+        } else if (movement.x > 0)
         {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }

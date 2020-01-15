@@ -6,10 +6,8 @@ using UnityEngine;
 public class MultiTargetCamera : MonoBehaviour
 {
     public List<Transform> players;
-    [SerializeField]
-    private Vector3 offset;
-    [SerializeField]
-    private float smoothTime = .5f;
+    public Vector3 offset;
+    public float smoothTime = .5f;
     public float minSize = 4f;
     public float maxSize = 7f;
     public float zoomDelay = 5f;
