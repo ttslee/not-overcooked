@@ -74,6 +74,8 @@ public class PlayerController : MonoBehaviour
                     Drop();
                 break;
         }
+
+
     }
 
     void FixedUpdate()
@@ -81,7 +83,26 @@ public class PlayerController : MonoBehaviour
         playerBody.MovePosition(playerBody.position + movement * moveSpd * Time.fixedDeltaTime);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!IsHoldingItem && collision.gameObject.CompareTag("Item"))
+            PickUp(collision);
+    }
+
     private void Drop()
     {
+
+    }
+
+    private void PickUp(Collider2D collision)
+    {
+        item = collision.GetComponent<GameObject>();
+
+        Vector2 pos = item.GetComponent<Rigidbody2D>().position;
+
+        if(movement.x == -1)
+        {
+
+        }
     }
 }
