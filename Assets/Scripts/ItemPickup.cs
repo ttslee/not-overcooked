@@ -12,6 +12,7 @@ public class ItemPickup : MonoBehaviour
 
     private bool pickUpAllowed;
 
+    private string tag;
     // Use this for initialization
     private void Start()
     {
@@ -27,20 +28,25 @@ public class ItemPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
-        {
-            pickUpSprite.gameObject.SetActive(true);
-            pickUpAllowed = true;
-        }
+        tag = collision.gameObject.tag;
+        //if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
+        //{
+        //    pickUpSprite.gameObject.SetActive(true);
+        //    pickUpAllowed = true;
+        //}
+        if (tag == "Player1")
+            print("p1\n");
+        else if (tag == "Player2")
+            print("p2\n");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
-        {
-            pickUpSprite.gameObject.SetActive(false);
-            pickUpAllowed = false;
-        }
+        //if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
+        //{
+        //    pickUpSprite.gameObject.SetActive(false);
+        //    pickUpAllowed = false;
+        //}
     }
 
     private void PickUp()
