@@ -96,6 +96,7 @@ public class PlayerController : MonoBehaviour
         {
             IsHoldingItem = true;
             it = collision.gameObject;
+            it.GetComponent<CircleCollider2D>().enabled = false;
             it.GetComponent<ItemPickup>().Holder = player;
             PickUp(collision);
         }
