@@ -102,7 +102,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &8081384175195966232
 BoxCollider2D:
@@ -142,6 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0ddfe7748421b4189cc240a9ba6725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpd: 1
+  moveSpd: 5
   playerBody: {fileID: 8081384175195966235}
-  player: 5
+  player: 1
