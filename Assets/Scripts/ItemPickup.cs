@@ -8,7 +8,9 @@ public class ItemPickup : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject pickUpSprite;
+    private GameObject player1Sprite;
+    [SerializeField]
+    private GameObject player2Sprite;
 
     private bool pickUpAllowed;
 
@@ -16,7 +18,8 @@ public class ItemPickup : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        pickUpSprite.gameObject.SetActive(false);
+        player1Sprite.gameObject.SetActive(false);
+        player2Sprite.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
