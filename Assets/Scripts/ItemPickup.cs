@@ -7,39 +7,24 @@ using UnityEngine.UI;
 public class ItemPickup : MonoBehaviour
 {
 
-    [SerializeField]
-    private GameObject player1Sprite;
-    [SerializeField]
-    private GameObject player2Sprite;
-
     private bool pickUpAllowed;
 
-    private string tag;
-    // Use this for initialization
-    private void Start()
-    {
-        player1Sprite.gameObject.SetActive(false);
-        player2Sprite.gameObject.SetActive(false);
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        if (pickUpAllowed && Input.GetKeyDown(KeyCode.E))
-            PickUp();
-    }
+    private string pTag;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        tag = collision.gameObject.tag;
-        //if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
-        //{
-        //    pickUpSprite.gameObject.SetActive(true);
-        //    pickUpAllowed = true;
-        //}
-        if (tag == "Player1")
-            print("p1\n");
-        else if (tag == "Player2")
+        pTag = collision.gameObject.tag;
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+        if (pTag == "Player1")
+        {
+            if (!player.IsHoldingItem)
+            {
+                player.IsHoldingItem = false;
+
+            }
+                
+        }
+        else if (pTag == "Player2")
             print("p2\n");
     }
 
@@ -54,7 +39,7 @@ public class ItemPickup : MonoBehaviour
 
     private void PickUp()
     {
-        Destroy(gameObject);
+        
     }
 
 }
