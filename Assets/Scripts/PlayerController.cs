@@ -119,19 +119,19 @@ public class PlayerController : MonoBehaviour
     {
         if (Item == null)
             return;
-        if (movement.y == 1)
+        if (movement.y >= .1f)
         {
             Item.localPosition = new Vector3(0, .4f, 1f);
         }
-        else if (movement.y == -1)
+        else if (movement.y <= -.1)
         {
             Item.localPosition = new Vector3(0, -.4f, 1f);
         }
-        else if (movement.x == -1)
+        else if (movement.x <= -.1)
         {
             Item.localPosition = new Vector3(.4f, 0, 1f);
         }
-        else if (movement.x == 1)
+        else if (movement.x >= .1f)
         {
             Item.localPosition = new Vector3(.4f, 0, 1f);
         }
