@@ -66,16 +66,12 @@ public class PlayerController : MonoBehaviour
         switch(player)
         {
             case 1:
-                if(Input.GetKeyDown("e") && IsHoldingItem)
-                {
+                if (Input.GetKeyDown("e") && IsHoldingItem)
                     Drop();
-                }
                 break;
             case 2:
                 if (Input.GetKeyDown("right ctrl") && IsHoldingItem)
-                {
                     Drop();
-                }
                 break;
         }
     }
@@ -85,8 +81,7 @@ public class PlayerController : MonoBehaviour
         playerBody.MovePosition(playerBody.position + movement * moveSpd * Time.fixedDeltaTime);
     }
 
-    void Drop()
+    private void Drop()
     {
     }
-
 }
