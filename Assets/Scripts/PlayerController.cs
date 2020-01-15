@@ -2,13 +2,15 @@
 
 public class PlayerController : MonoBehaviour
 {
+    //Player
     public int player = 1;
-    //Movement
+
+    //Movement/Animation/Pickup
+    public Animator animator;
     Vector2 movement;
 
     [SerializeField]
     private float moveSpd = 1f;
-
     private string horizontal, vertical;
 
     [SerializeField]
@@ -54,7 +56,9 @@ public class PlayerController : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw(horizontal);
         movement.y = Input.GetAxisRaw(vertical);
-        
+        movement = movement.normalized;
+
+        animator.SetFloat("Speed", movement.sqrMagnitude);
         if (movement.x == -1)
         {
             transform.localRotation = Quaternion.Euler(0, 180, 0);

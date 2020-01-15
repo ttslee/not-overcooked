@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 1
+  animator: {fileID: -7623992862134333245}
   moveSpd: 5
   playerBody: {fileID: 2804905518723522797}
 --- !u!95 &-7623992862134333245
