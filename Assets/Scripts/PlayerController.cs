@@ -2,21 +2,34 @@
 
 public class PlayerController : MonoBehaviour
 {
-
+    public int player = 1;
     //Movement
+    Vector2 movement;
+
     [SerializeField]
     private float moveSpd = 1f;
+
+    private string horizontal, vertical;
+
     [SerializeField]
     private Rigidbody2D playerBody;
 
     private GameObject item;
 
-    public int player = 1;
+    public GameObject Item
+    {
+        get
+        {
+            return item;
+        }
 
-    private string horizontal, vertical;
-    Vector2 movement;
+        set
+        {
+            item = value;
+        }
+    }
 
-    
+
     private bool isHoldingItem = false;
 
     public bool IsHoldingItem
@@ -53,15 +66,15 @@ public class PlayerController : MonoBehaviour
         switch(player)
         {
             case 1:
-                if(Input.GetKeyDown("e") && isHoldingItem)
+                if(Input.GetKeyDown("e") && IsHoldingItem)
                 {
-                    TossItem();
+                    Drop();
                 }
                 break;
             case 2:
-                if (Input.GetKeyDown("right ctrl") && isHoldingItem)
+                if (Input.GetKeyDown("right ctrl") && IsHoldingItem)
                 {
-                    TossItem();
+                    Drop();
                 }
                 break;
         }
@@ -72,7 +85,7 @@ public class PlayerController : MonoBehaviour
         playerBody.MovePosition(playerBody.position + movement * moveSpd * Time.fixedDeltaTime);
     }
 
-    void TossItem()
+    void Drop()
     {
     }
 
