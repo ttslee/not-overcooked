@@ -110,7 +110,10 @@ public class PlayerController : MonoBehaviour
     {
         Item = collision.gameObject.transform;
         Item.parent = transform;
-        setItemPosition();
+        if(movement.y == 0 && movement.x == 0)
+            Item.localPosition = new Vector3(0, -.4f, 1f);
+        else
+            setItemPosition();
     }
     private void setItemPosition()
     {
