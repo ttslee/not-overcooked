@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
             return;
         if (movement.y == 1)
         {
-            Item.localPosition = new Vector3(0, .7f, 1f);
+            Item.localPosition = new Vector3(0, .4f, 1f);
         }
         else if (movement.y == -1)
         {
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (movement.x == -1)
         {
-            Item.localPosition = new Vector3(-.7f, 0, 1f);
+            Item.localPosition = new Vector3(.4f, 0, 1f);
         }
         else if (movement.x == 1)
         {
