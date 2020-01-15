@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     //Item Pickup
     private GameObject it;
     private Transform item;
+    private float timer = 2.0f;
+    private bool dropped = false;
 
     public Transform Item
     {
@@ -83,12 +85,23 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         playerBody.MovePosition(playerBody.position + movement * moveSpd * Time.fixedDeltaTime);
-        setItemPosition();
+        if(timer <= 0)
+        {
+            dropped = false;
+            timer = 2.0f;
+            print("reset");
+        }
+        if(dropped)
+        {
+            timer -= Time.fixedDeltaTime;
+        }
+        else
+            setItemPosition();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!IsHoldingItem && collision.gameObject.CompareTag("Item") && collision.gameObject.GetComponent<ItemPickup>().Holder == 0)
+        if (!IsHoldingItem && !dropped && collision.gameObject.CompareTag("Item") && collision.gameObject.GetComponent<ItemPickup>().Holder == 0)
         {
             IsHoldingItem = true;
             it = collision.gameObject;
@@ -101,9 +114,12 @@ public class PlayerController : MonoBehaviour
 
     private void Drop()
     {
+        print("here");
+        it.GetComponent<ItemPickup>().Holder = 0;
         IsHoldingItem = false;
         it = null;
-        item = null;
+        Item = null;
+        timerStart();
     }
 
     private void PickUp(Collider2D collision)
@@ -115,6 +131,7 @@ public class PlayerController : MonoBehaviour
         else
             setItemPosition();
     }
+
     private void setItemPosition()
     {
         if (Item == null)
@@ -127,13 +144,30 @@ public class PlayerController : MonoBehaviour
         {
             Item.localPosition = new Vector3(0, -.4f, 1f);
         }
-        else if (movement.x <= -.1)
+        else if (movement.x <= -.1 || movement.x >= .1f)
         {
             Item.localPosition = new Vector3(.4f, 0, 1f);
         }
-        else if (movement.x >= .1f)
-        {
-            Item.localPosition = new Vector3(.4f, 0, 1f);
-        }
+    }
+
+    private void timerStart()
+    {
+        dropped = true;
+    }
+
+    private string calcLocalPos()
+    {
+        Vector3 localPos = Item.localPosition - transform.position;
+
+        if (localPos.x < 0)
+            return "left";
+        else if (localPos.x > 0)
+            return "right";
+        else if (localPos.y < 0)
+            return "down";
+        else if (localPos.y > 0)
+            return "up";
+        else
+            return "none";
     }
 }
