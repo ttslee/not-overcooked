@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Rigidbody2D playerBody;
 
+    private GameObject it;
+
     private Transform item;
 
     public Transform Item
@@ -90,13 +92,21 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!IsHoldingItem && collision.gameObject.CompareTag("Item"))
+        if (!IsHoldingItem && collision.gameObject.CompareTag("Item") && collision.gameObject.GetComponent<ItemPickup>().Holder == 0)
+        {
+            IsHoldingItem = true;
+            it = collision.gameObject;
+            it.GetComponent<ItemPickup>().Holder = player;
             PickUp(collision);
+        }
+            
     }
 
     private void Drop()
     {
-
+        IsHoldingItem = false;
+        it = null;
+        item = null;
     }
 
     private void PickUp(Collider2D collision)
