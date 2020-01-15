@@ -217,7 +217,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 38.7
   orthographic: 1
   orthographic size: 5
   m_Depth: -1
@@ -265,7 +265,10 @@ MonoBehaviour:
   - {fileID: 6627097036780226417}
   - {fileID: 1845188718499268897}
   offset: {x: 0, y: 0, z: -10}
-  smoothTime: 0.5
+  smoothTime: 0.1
+  minSize: 3
+  maxSize: 7
+  zoomDelay: 7
 --- !u!1 &1138864476
 GameObject:
   m_ObjectHideFlags: 0
