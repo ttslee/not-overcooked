@@ -5,15 +5,16 @@ using UnityEngine;
 public class MonsterManager : MonoBehaviour
 {
     // Recipes/ItemList
+    public int numRecipes = 6;
     [System.Serializable]
     public class Recipes
     {
-        public string[] recipes;
+        public List<string> items;
     }
 
-    public Recipes[] myRecipes;
+    public List<Recipes> myRecipes;
     
-    public Recipes[] MyRecipes
+    public List<Recipes> MyRecipes
     {
         get
         {
@@ -26,13 +27,19 @@ public class MonsterManager : MonoBehaviour
         }
     }
 
-    private string[] itemList = 
+    private static List<string> itemList1 = new List<string> 
+    {
+            "red ore",
+            "burned mouse",
+            "ash",
+            "burned skull",
+    };
+    private static List<string> itemList2 = new List<string>
     {
             "dark ore",
-            "red ore",
-            "dead mouse",
-            ""
-
+            "rotten mouse",
+            "withered herb",
+            "withered skull",
     };
 
     // ManagerTimer
@@ -40,16 +47,43 @@ public class MonsterManager : MonoBehaviour
     void Start()
     {
         // Shuffle list of items for this game.
-        for (int i = 0; i < itemList.Length; i++)
-        {
-            string temp = itemList[i];
-            int randomIndex = Random.Range(i, itemList.Length);
-            itemList[i] = itemList[randomIndex];
-            itemList[randomIndex] = temp;
-        }
-        //print(itemList);
-    }
 
+        for(int n = 0; n < 6; ++n)
+        {
+            List<string> randomList = GenerateRandomList();
+            for (int i = 0; i < 4; i++)
+            {
+                string temp = randomList[i];
+                int randomindex = Random.Range(i, 4);
+                randomList[i] = randomList[randomindex];
+                randomList[randomindex] = temp;
+            }
+            for (int j = 0; j < 4; j++)
+            {
+                MyRecipes[n].items.Add(randomList[j]);
+            }
+        }
+    }
+    private List<string> GenerateRandomList()
+    {
+        List<string> randList = new List<string> ();
+        for (int i = 0; i < 2; i++)
+        {
+            int num = Random.Range(0, 4);
+            while (randList.Contains(itemList1[num]))
+            {
+                num = Random.Range(0, 4);
+            }
+            randList.Add(itemList1[num]);
+            num = Random.Range(0, 4);
+            while (randList.Contains(itemList2[num]))
+            {
+                num = Random.Range(0, 4);
+            }
+            randList.Add(itemList2[num]);
+        }
+        return randList;
+    }
     // Update is called once per frame
     void Update()
     {
