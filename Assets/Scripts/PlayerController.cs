@@ -7,9 +7,8 @@ public class PlayerController : MonoBehaviour
 
     //Animation
     public Animator animator;
-    Vector2 floatY;
     float originalY;
-    private float floatStrength = 0.1f;
+    private float floatStrength = 0.002f;
 
     //Movement
     Vector2 movement;
@@ -140,34 +139,37 @@ public class PlayerController : MonoBehaviour
     {
         Item = collision.gameObject.transform;
         Item.parent = transform;
-        if(movement.y == 0 && movement.x == 0)
+        if (movement.y == 0 && movement.x == 0)
+        {
             Item.localPosition = new Vector3(0, -.4f, 1f);
+            originalY = Item.position.y;
+        }
         else
             setItemPosition();
     }
 
     private void setItemPosition()
     {
-        
-        if (movement.y >= .1f)
+
+        if (movement.y >= .1f && movement.x == 0 && originalY != .4f)
         {
             Item.localPosition = new Vector3(0, .4f, 1f);
-            originalY = Item.position.y;
+            originalY = .4f;
         }
-        else if (movement.y <= -.1)
+        else if (movement.y <= -.1 && originalY != -.4)
         {
             Item.localPosition = new Vector3(0, -.4f, 1f);
-            originalY = Item.position.y;
+            originalY = -.4f;
         }
-        else if (movement.x <= -.1 || movement.x >= .1f)
+        else if ((movement.x <= -.1 || movement.x >= .1f) && originalY != 0)
         {
             Item.localPosition = new Vector3(.4f, 0, 1f);
-            originalY = Item.position.y;
+            originalY = 0;
         }
         else
         {
-            Item.transform.position = new Vector2(Item.position.x,
-            originalY + ((float)Mathf.Sin(Time.time) * floatStrength));
+            Item.transform.position = new Vector3(Item.position.x,
+            Item.position.y + ((float)Mathf.Sin(Time.time) * floatStrength), 1f);
         }
     }
 
