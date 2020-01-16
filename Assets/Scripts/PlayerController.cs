@@ -112,10 +112,22 @@ public class PlayerController : MonoBehaviour
             
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (!IsHoldingItem && !dropped && other.gameObject.CompareTag("Item") && other.gameObject.GetComponent<ItemPickup>().Holder == 0)
+        {
+            IsHoldingItem = true;
+            it = other.gameObject;
+            it.GetComponent<CircleCollider2D>().enabled = false;
+            it.GetComponent<ItemPickup>().Holder = player;
+            PickUp(other);
+        }
+    }
     private void Drop()
     {
         print("here");
         Item.parent = null;
+        it.GetComponent<CircleCollider2D>().enabled = true;
         it.GetComponent<ItemPickup>().Drop(calcLocalPos());
         IsHoldingItem = false;
         it = null;

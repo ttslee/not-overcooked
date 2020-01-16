@@ -11,6 +11,10 @@ public class ItemPickup : MonoBehaviour
     private string direction;
     private SpriteRenderer image;
 
+    private void Start()
+    {
+        print(transform.parent);
+    }
     private void Awake()
     {
         image = gameObject.GetComponent<SpriteRenderer>();
