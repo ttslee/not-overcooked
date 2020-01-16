@@ -43,6 +43,9 @@ public class MonsterManager : MonoBehaviour
     };
 
     // ManagerTimer
+    private float timer1 = 25f;
+    private float timer2 = 25f;
+    private float timer3 = 25f;
     // Start is called before the first frame update
     void Start()
     {
