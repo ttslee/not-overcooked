@@ -139,6 +139,8 @@ public class PlayerController : MonoBehaviour
     private void PickUp(Collider2D collision)
     {
         Item = collision.gameObject.transform;
+        if (Item == null)
+            return;
         Item.parent = transform;
         if(movement.y == 0 && movement.x == 0)
             Item.localPosition = new Vector3(0, -.4f, 1f);
@@ -148,8 +150,7 @@ public class PlayerController : MonoBehaviour
 
     private void setItemPosition()
     {
-        if (Item == null)
-            return;
+        
         if (movement.y >= .1f)
         {
             Item.localPosition = new Vector3(0, .4f, 1f);

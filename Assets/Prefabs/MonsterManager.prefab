@@ -46,6 +46,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1953e4edc7f11e4fac5115f729c8c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRecipes:
+  - recipes:
+    - 
+    - 
+    - 
+    - 
+  - recipes:
+    - 
+    - 
+    - 
+    - 
+  - recipes:
+    - 
+    - 
+    - 
+    - 
+  - recipes:
+    - 
+    - 
+    - 
+    - 
 --- !u!1001 &2258244876978158357
 PrefabInstance:
   m_ObjectHideFlags: 0

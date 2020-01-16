@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
-    public struct Recipe
+    [System.Serializable]
+    public class Recipes
     {
-
+        public string[] recipes;
     }
+
+    public Recipes[] myRecipes;
     // Start is called before the first frame update
     void Start()
     {
