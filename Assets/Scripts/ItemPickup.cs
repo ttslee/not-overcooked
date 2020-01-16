@@ -32,6 +32,7 @@ public class ItemPickup : MonoBehaviour
             //print(value);
             holder = value;
             image.sortingOrder = 2;
+            gameObject.GetComponentsInChildren<SpriteRenderer>()[1].enabled = false;
         }
     }
 
@@ -62,5 +63,6 @@ public class ItemPickup : MonoBehaviour
         direction = dir;
         dropped = true;
         image.sortingOrder = 0;
+        gameObject.GetComponentsInChildren<SpriteRenderer>()[1].enabled = true;
     }
 }
