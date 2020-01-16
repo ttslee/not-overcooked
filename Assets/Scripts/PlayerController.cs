@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
         {
             dropped = false;
             timer = 2.0f;
-            print("reset");
+            //print("reset");
         }
         if(dropped)
         {
@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Drop()
     {
-        print("here");
+        //print("here");
         Item.parent = null;
         it.GetComponent<CircleCollider2D>().enabled = true;
         it.GetComponent<ItemPickup>().Drop(calcLocalPos());

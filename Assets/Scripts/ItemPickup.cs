@@ -13,7 +13,7 @@ public class ItemPickup : MonoBehaviour
 
     private void Start()
     {
-        print(transform.parent);
+        //print(transform.parent);
     }
     private void Awake()
     {
@@ -29,7 +29,7 @@ public class ItemPickup : MonoBehaviour
 
         set
         {
-            print(value);
+            //print(value);
             holder = value;
             image.sortingOrder = 2;
         }
