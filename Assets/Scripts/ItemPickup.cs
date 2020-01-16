@@ -18,16 +18,34 @@ public class ItemPickup : MonoBehaviour
 
         set
         {
+            print(value);
             holder = value;
         }
     }
+
+    private void Update()
+    {
+        switch(direction)
+        {
+            case "up":
+                break;
+            case "down":
+                break;
+            case "right":
+                break;
+            case "left":
+                break;
+        }
+    }
+
     public void Kill()
     {
         Destroy(gameObject);
     }
 
-    public void Dropped(string dir)
+    public void Drop(string dir)
     {
+        Holder = 0;
         direction = dir;
         dropped = true;
     }

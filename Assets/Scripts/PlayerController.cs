@@ -115,10 +115,12 @@ public class PlayerController : MonoBehaviour
     private void Drop()
     {
         print("here");
-        it.GetComponent<ItemPickup>().Holder = 0;
+        Item.parent = null;
+        it.GetComponent<ItemPickup>().Drop(calcLocalPos());
         IsHoldingItem = false;
         it = null;
         Item = null;
+
         timerStart();
     }
 
