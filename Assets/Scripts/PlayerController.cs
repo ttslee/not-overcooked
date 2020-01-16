@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
         {
             timer -= Time.fixedDeltaTime;
         }
-        else
+        else if(IsHoldingItem)
             setItemPosition();
     }
 
