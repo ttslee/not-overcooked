@@ -141,8 +141,8 @@ public class PlayerController : MonoBehaviour
         Item.parent = transform;
         if (movement.y == 0 && movement.x == 0)
         {
-            Item.localPosition = new Vector3(0, -.4f, 1f);
-            originalY = Item.position.y;
+            Item.localPosition = new Vector3(0, -.3f, 1f);
+            originalY = -.4f;
         }
         else
             setItemPosition();
@@ -151,14 +151,14 @@ public class PlayerController : MonoBehaviour
     private void setItemPosition()
     {
 
-        if (movement.y >= .1f && movement.x == 0 && originalY != .4f)
+        if (movement.y >= .1f && originalY != .3f)
         {
-            Item.localPosition = new Vector3(0, .4f, 1f);
+            Item.localPosition = new Vector3(0, .3f, 1f);
             originalY = .4f;
         }
-        else if (movement.y <= -.1 && originalY != -.4)
+        else if (movement.y <= -.1 && originalY != -.3)
         {
-            Item.localPosition = new Vector3(0, -.4f, 1f);
+            Item.localPosition = new Vector3(0, -.3f, 1f);
             originalY = -.4f;
         }
         else if ((movement.x <= -.1 || movement.x >= .1f) && originalY != 0)
@@ -166,11 +166,10 @@ public class PlayerController : MonoBehaviour
             Item.localPosition = new Vector3(.4f, 0, 1f);
             originalY = 0;
         }
-        else
-        {
-            Item.transform.position = new Vector3(Item.position.x,
-            Item.position.y + ((float)Mathf.Sin(Time.time) * floatStrength), 1f);
-        }
+        
+        Item.transform.position = new Vector3(Item.position.x,
+        Item.position.y + ((float)Mathf.Sin(Time.time) * floatStrength), 1f);
+        
     }
 
     private void timerStart()
