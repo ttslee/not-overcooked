@@ -37,6 +37,7 @@ public class ItemPickup : MonoBehaviour
 
     private void Update()
     {
+        if(dropped)
         switch(direction)
         {
             case "up":

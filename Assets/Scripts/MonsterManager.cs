@@ -47,7 +47,7 @@ public class MonsterManager : MonoBehaviour
             itemList[i] = itemList[randomIndex];
             itemList[randomIndex] = temp;
         }
-        print(itemList);
+        //print(itemList);
     }
 
     // Update is called once per frame
