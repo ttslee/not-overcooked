@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     //Item Pickup
     private GameObject it;
     private Transform item;
-    private float timer = 2.0f;
+    private float timer = .4f;
     private bool dropped = false;
 
     public Transform Item
