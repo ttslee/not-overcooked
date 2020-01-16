@@ -31,7 +31,7 @@ public class ItemPickup : MonoBehaviour
         {
             print(value);
             holder = value;
-            image.sortingOrder = 1;
+            image.sortingOrder = 2;
         }
     }
 
