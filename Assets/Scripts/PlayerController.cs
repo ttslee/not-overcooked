@@ -5,8 +5,13 @@ public class PlayerController : MonoBehaviour
     //Player
     public int player = 1;
 
-    //Movement/Animation
+    //Animation
     public Animator animator;
+    Vector2 floatY;
+    float originalY;
+    private float floatStrength = 0.1f;
+
+    //Movement
     Vector2 movement;
     public float moveSpd = 1f;
     private string horizontal, vertical;
@@ -56,8 +61,7 @@ public class PlayerController : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw(horizontal);
         movement.y = Input.GetAxisRaw(vertical);
-        movement = movement.normalized;
-
+        movement = movement.normalized; 
         animator.SetFloat("Speed", movement.sqrMagnitude);
         if (movement.x < 0)
         {
@@ -79,7 +83,6 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
-
     }
 
     void FixedUpdate()
@@ -88,8 +91,7 @@ public class PlayerController : MonoBehaviour
         if(timer <= 0)
         {
             dropped = false;
-            timer = 2.0f;
-            //print("reset");
+            timer = .4f;
         }
         if(dropped)
         {
@@ -125,22 +127,18 @@ public class PlayerController : MonoBehaviour
     }
     private void Drop()
     {
-        //print("here");
         Item.parent = null;
         it.GetComponent<CircleCollider2D>().enabled = true;
         it.GetComponent<ItemPickup>().Drop(calcLocalPos());
         IsHoldingItem = false;
         it = null;
         Item = null;
-
         timerStart();
     }
 
     private void PickUp(Collider2D collision)
     {
         Item = collision.gameObject.transform;
-        if (Item == null)
-            return;
         Item.parent = transform;
         if(movement.y == 0 && movement.x == 0)
             Item.localPosition = new Vector3(0, -.4f, 1f);
@@ -154,14 +152,22 @@ public class PlayerController : MonoBehaviour
         if (movement.y >= .1f)
         {
             Item.localPosition = new Vector3(0, .4f, 1f);
+            originalY = Item.position.y;
         }
         else if (movement.y <= -.1)
         {
             Item.localPosition = new Vector3(0, -.4f, 1f);
+            originalY = Item.position.y;
         }
         else if (movement.x <= -.1 || movement.x >= .1f)
         {
             Item.localPosition = new Vector3(.4f, 0, 1f);
+            originalY = Item.position.y;
+        }
+        else
+        {
+            Item.transform.position = new Vector2(Item.position.x,
+            originalY + ((float)Mathf.Sin(Time.time) * floatStrength));
         }
     }
 
