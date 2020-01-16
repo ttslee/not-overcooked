@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3478163023067682884}
   - component: {fileID: 3478163023067682881}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MultiTarget Cam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,5 +102,5 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -10}
   smoothTime: 0.1
   minSize: 3
-  maxSize: 7
-  zoomDelay: 7
+  maxSize: 12
+  zoomDelay: 12

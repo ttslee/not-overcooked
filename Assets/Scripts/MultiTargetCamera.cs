@@ -7,10 +7,10 @@ public class MultiTargetCamera : MonoBehaviour
 {
     public List<Transform> players;
     public Vector3 offset;
-    public float smoothTime = .5f;
-    public float minSize = 4f;
-    public float maxSize = 7f;
-    public float zoomDelay = 5f;
+    public float smoothTime = .1f;
+    public float minSize = 3f;
+    public float maxSize = 15f;
+    public float zoomDelay = 7f;
 
     private Vector3 velocity;
     private Camera cam;
@@ -48,7 +48,8 @@ public class MultiTargetCamera : MonoBehaviour
 
     float GetGreatestDistance()
     {
-        return GetEncapsulatingBounds().size.x;
+        
+        return Mathf.Max(GetEncapsulatingBounds().size.x, GetEncapsulatingBounds().size.y);
     }
 
     Bounds GetEncapsulatingBounds()
