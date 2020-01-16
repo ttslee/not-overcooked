@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 
     //Animation
     public Animator animator;
-    float originalY;
+    float originalY = 0;
     private float floatStrength = 0.002f;
 
     //Movement
@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
         IsHoldingItem = false;
         it = null;
         Item = null;
+        originalY = 0;
         timerStart();
     }
 
@@ -161,10 +162,10 @@ public class PlayerController : MonoBehaviour
             Item.localPosition = new Vector3(0, -.3f, 1f);
             originalY = -.4f;
         }
-        else if ((movement.x <= -.1 || movement.x >= .1f) && originalY != 0)
+        else if ((movement.x <= -.1 || movement.x >= .1f) && originalY != 0.1f)
         {
             Item.localPosition = new Vector3(.4f, 0, 1f);
-            originalY = 0;
+            originalY = 0.1f;
         }
         
         Item.transform.position = new Vector3(Item.position.x,
