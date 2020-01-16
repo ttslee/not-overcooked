@@ -9,6 +9,13 @@ public class ItemPickup : MonoBehaviour
     private int holder = 0;
     private bool dropped = false;
     private string direction;
+    private SpriteRenderer image;
+
+    private void Awake()
+    {
+        image = gameObject.GetComponent<SpriteRenderer>();
+    }
+
     public int Holder
     {
         get
@@ -20,6 +27,7 @@ public class ItemPickup : MonoBehaviour
         {
             print(value);
             holder = value;
+            image.sortingOrder = 1;
         }
     }
 
@@ -48,5 +56,6 @@ public class ItemPickup : MonoBehaviour
         Holder = 0;
         direction = dir;
         dropped = true;
+        image.sortingOrder = 0;
     }
 }
