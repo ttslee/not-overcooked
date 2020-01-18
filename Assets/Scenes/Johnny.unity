@@ -598,7 +598,7 @@ MonoBehaviour:
   - {fileID: 908344682}
   offset: {x: 0, y: 0, z: -10}
   smoothTime: 0.1
-  minSize: 3
+  minSize: 5
   maxSize: 12
   zoomDelay: 12
 --- !u!1001 &1636900776
@@ -1631,6 +1631,75 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &6893057816571076907
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6893057817024569576, guid: 87dc1bd5e0eadb946bb9ae64a8b77cc3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893057817024569576, guid: 87dc1bd5e0eadb946bb9ae64a8b77cc3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893057817024569576, guid: 87dc1bd5e0eadb946bb9ae64a8b77cc3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893057817024569576, guid: 87dc1bd5e0eadb946bb9ae64a8b77cc3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893057817024569576, guid: 87dc1bd5e0eadb946bb9ae64a8b77cc3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893057817024569576, guid: 87dc1bd5e0eadb946bb9ae64a8b77cc3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893057817024569576, guid: 87dc1bd5e0eadb946bb9ae64a8b77cc3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893057817024569576, guid: 87dc1bd5e0eadb946bb9ae64a8b77cc3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893057817024569576, guid: 87dc1bd5e0eadb946bb9ae64a8b77cc3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893057817024569576, guid: 87dc1bd5e0eadb946bb9ae64a8b77cc3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893057817024569576, guid: 87dc1bd5e0eadb946bb9ae64a8b77cc3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893057817024569578, guid: 87dc1bd5e0eadb946bb9ae64a8b77cc3,
+        type: 3}
+      propertyPath: m_Name
+      value: Cauldron
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 87dc1bd5e0eadb946bb9ae64a8b77cc3, type: 3}
 --- !u!58 &7606614446887055188
 CircleCollider2D:
   m_ObjectHideFlags: 0
