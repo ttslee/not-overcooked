@@ -89,7 +89,7 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision) // Pick up the correct item
+    private void OnTriggerEnter2D(Collider2D collision) // Pick up the correct item
     {
         print(collision.name);
         if (!HasRecipe)
