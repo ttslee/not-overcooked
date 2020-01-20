@@ -20,4 +20,9 @@ public class MonsterSprite : MonoBehaviour
         //set the object's Y to the new calculated Y
         transform.localPosition = new Vector3(0, startY + newY, 0) ;
     }
+
+    public void SetSprite(Sprite image)
+    {
+        GetComponent<SpriteRenderer>().sprite = image;
+    }
 }

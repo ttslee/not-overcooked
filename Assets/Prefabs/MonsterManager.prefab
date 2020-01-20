@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6902183899962584210}
   - component: {fileID: 6902183899962584239}
   - component: {fileID: 2272573399914188693}
+  - component: {fileID: 5400440829266839908}
   m_Layer: 0
   m_Name: MonsterManager
   m_TagString: Untagged
@@ -102,6 +103,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be1da405eb97c14ea995db35fea5de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5400440829266839908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6902183899962584211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3ee9cc44273664a882e4ff1a952adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - name: dark ore
+    image: {fileID: 4639506938558671751, guid: 6db934f5df123ce438fcc3e1111fb1d7, type: 3}
+  - name: red ore
+    image: {fileID: -6099050445329199328, guid: 6db934f5df123ce438fcc3e1111fb1d7,
+      type: 3}
+  - name: rotten skull
+    image: {fileID: -7855203551248514480, guid: 6db934f5df123ce438fcc3e1111fb1d7,
+      type: 3}
+  - name: burnt skull
+    image: {fileID: -2064859774160998932, guid: 6db934f5df123ce438fcc3e1111fb1d7,
+      type: 3}
+  - name: rotten rat
+    image: {fileID: -3694533877916086887, guid: 6db934f5df123ce438fcc3e1111fb1d7,
+      type: 3}
+  - name: burnt rat
+    image: {fileID: 2029542551908640097, guid: 6db934f5df123ce438fcc3e1111fb1d7, type: 3}
+  - name: rotten eye
+    image: {fileID: -2821042892349479055, guid: 6db934f5df123ce438fcc3e1111fb1d7,
+      type: 3}
+  - name: burnt eye
+    image: {fileID: -4261047623482395726, guid: 6db934f5df123ce438fcc3e1111fb1d7,
+      type: 3}
 --- !u!1001 &6902183900331745293
 PrefabInstance:
   m_ObjectHideFlags: 0

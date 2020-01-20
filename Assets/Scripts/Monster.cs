@@ -107,8 +107,8 @@ public class Monster : MonoBehaviour
 
     }
 
-    private void setFloatingSprite(string item)
+    private void setFloatingSprite(string name)
     {
-
+        GetComponentInChildren<MonsterSprite>().SetSprite(GetComponentInParent<AllItems>().SpriteDictionary[name]);
     }
 }

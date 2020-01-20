@@ -35,16 +35,16 @@ public class MonsterManager : MonoBehaviour
     private static List<string> itemList1 = new List<string> 
     {
             "red ore",
-            "burned rat",
-            "ash",
-            "burned skull",
+            "burnt rat",
+            "burnt eye",
+            "burnt skull",
     };
     private static List<string> itemList2 = new List<string>
     {
             "dark ore",
             "rotten rat",
-            "withered herb",
-            "withered skull",
+            "rotten eye",
+            "rotten skull",
     };
 
     // ManagerTimer
