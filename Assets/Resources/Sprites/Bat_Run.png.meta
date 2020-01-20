@@ -1,31 +1,16 @@
 fileFormatVersion: 2
-guid: a1c2908e47ed34b4f81f759974ea7b5b
+guid: 5c3d76c9580f96f4ab67a85c548cdf58
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7482177786666212508
-    second: Monster_0
+      213: -7960056978225911515
+    second: Bat_Run_0
   - first:
-      213: -7783437513647718680
-    second: Monster_1
+      213: 4058304911313277669
+    second: Bat_Run_1
   - first:
-      213: -724056971925584315
-    second: Monster_2
-  - first:
-      213: -233947400402218603
-    second: Monster_3
-  - first:
-      213: 5538744878310211288
-    second: Monster_4
-  - first:
-      213: -2789685161255136304
-    second: Monster_5
-  - first:
-      213: 5591917615992662062
-    second: Monster_6
-  - first:
-      213: 3718482036254201638
-    second: Monster_7
+      213: 5640446224794692105
+    second: Bat_Run_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -122,97 +107,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Monster_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cd093a38f198db84ea92ffeddb194353
-      internalID: -7482177786666212508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Monster_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 62703ed5c21af5a4b9d24a884cd44916
-      internalID: -7783437513647718680
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Monster_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1fa7174d405372e44a43a1e72e76d3af
-      internalID: -724056971925584315
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Monster_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a74edd285cd3b44b9d77f54556451ef
-      internalID: -233947400402218603
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Monster_4
+      name: Bat_Run_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,20 +121,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41c4d68418267d045b987bf6a3d25058
-      internalID: 5538744878310211288
+      spriteID: 2ad89d763ca78614f826f07b26e9fd01
+      internalID: -7960056978225911515
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monster_5
+      name: Bat_Run_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f69cb88a89826e948a356cde7bd783c6
+      internalID: 4058304911313277669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bat_Run_2
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,50 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 099660d703f4bb849b2e45dffa177baa
-      internalID: -2789685161255136304
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Monster_6
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ef7ef6f55bab064bb4f1e28b7e35149
-      internalID: 5591917615992662062
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Monster_7
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f7c4f06480b9e64183df3191051e968
-      internalID: 3718482036254201638
+      spriteID: df966b84240e16843895106c67d80dae
+      internalID: 5640446224794692105
       vertices: []
       indices: 
       edges: []
