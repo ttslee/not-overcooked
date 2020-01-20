@@ -25,4 +25,9 @@ public class MonsterSprite : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = image;
     }
+
+    public void RemoveImage()
+    {
+        GetComponent<SpriteRenderer>().sprite = null;
+    }
 }

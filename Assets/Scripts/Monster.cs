@@ -70,9 +70,16 @@ public class Monster : MonoBehaviour
         if(HasRecipe)
         {
             if (NumItemsLeft == 0)
+            {
                 gameObject.GetComponentInParent<MonsterManager>().AlertManager_RecipeComplete(monster_num);
+                GetComponentInChildren<MonsterSprite>().RemoveImage();
+            }
             if(timer.Done && NumItemsLeft > 0)
+            {
                 gameObject.GetComponentInParent<MonsterManager>().AlertManager_TimedOut(monster_num);
+                GetComponentInChildren<MonsterSprite>().RemoveImage();
+            }
+                
             
         }
     }
@@ -98,7 +105,7 @@ public class Monster : MonoBehaviour
         recipe = r;
         HasRecipe = true;
         currentItem = 0;
-        GetComponent<Timer>().SetTime(25f, nm);
+        GetComponent<Timer>().SetTime(7f, nm);
         setFloatingSprite(recipe[currentItem]);
     }
 
