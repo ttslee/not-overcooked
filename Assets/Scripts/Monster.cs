@@ -5,7 +5,6 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     //Monster info
-    private bool mDone = false; // Bool for checking whether the recipe is complete
     private int monster_num;
 
     //Recipe info
@@ -60,6 +59,9 @@ public class Monster : MonoBehaviour
     private Timer timer;
     private float waitTime = 10f;
     // Start is called before the first frame update
+
+    //Animator
+    public Animator animator;
     void Start()
     {
         timer = gameObject.GetComponent<Timer>();   
@@ -97,6 +99,7 @@ public class Monster : MonoBehaviour
             print("CALLED");
             NumItemsLeft -= 1;
             currentItem++;
+            animator.SetFloat("Chomp", 1.0f);
             collision.gameObject.GetComponent<ItemPickup>().Kill();
             setFloatingSprite(recipe[currentItem]);
         }

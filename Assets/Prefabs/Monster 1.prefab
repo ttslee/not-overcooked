@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: []
+  animator: {fileID: 4863374624415788946}
 --- !u!114 &302817656088555777
 MonoBehaviour:
   m_ObjectHideFlags: 0
