@@ -5,8 +5,12 @@ using UnityEngine;
 public class MonsterManager : MonoBehaviour
 {
     // Recipes/ItemList
+    private int nRecipes = 6;
+    private int recipeSize = 4;
     private int count = 0;
-    
+    private int unfinished_recipes = 0;
+    private int completed_recipes = 0;
+
     [System.Serializable]
     public class Recipes
     {
@@ -31,50 +35,52 @@ public class MonsterManager : MonoBehaviour
     private static List<string> itemList1 = new List<string> 
     {
             "red ore",
-            "burned mouse",
+            "burned rat",
             "ash",
             "burned skull",
     };
     private static List<string> itemList2 = new List<string>
     {
             "dark ore",
-            "rotten mouse",
+            "rotten rat",
             "withered herb",
             "withered skull",
     };
 
     // ManagerTimer
+    private Timer timer;
     private float rDelay = 5f;
 
     // Monster Management
-    private int nMonsters = 3;
     private static List<string> mList = new List<string>{ "Monster1", "Monster2", "Monster3" };
-
-    private static List<bool> awakeList = new List<bool> { false, false, false };  // List of monsters that currently have a recipe.
-
-    private Queue<string> monsterQueue;
+    private static List<int>    mAvailableList = new List<int> { 0, 1, 2 };
+    private static List<bool>   awakeList = new List<bool> { false, false, false };  // List of monsters that currently have a recipe.
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
+        timer = gameObject.GetComponent<Timer>();
         // Shuffle list of items for this game.
-
-        for(int n = 0; n < 6; ++n)
+        for(int n = 0; n < nRecipes; ++n)
         {
             List<string> randomList = GenerateRandomList();
-            for (int i = 0; i < 4; i++)
-            {
-                string temp = randomList[i];
-                int randomindex = Random.Range(i, 4);
-                randomList[i] = randomList[randomindex];
-                randomList[randomindex] = temp;
-            }
-            for (int j = 0; j < 4; j++)
+            ShuffleList<string>(randomList, recipeSize);
+            for (int j = 0; j < recipeSize; j++)
             {
                 MyRecipes[n].items.Add(randomList[j]);
             }
         }
-        for(int i = 0; i < nMonsters; ++i)
+        ShuffleList<int>(mAvailableList, mAvailableList.Count);
+        WakeUpMonster(mAvailableList[0]);
+    }
+
+    private void ShuffleList<T>(List<T> list, int sz)
+    {
+        for (int i = 0; i < sz; i++)
         {
+            T temp = list[i];
+            int randomindex = Random.Range(i, sz-1);
+            list[i] = list[randomindex];
+            list[randomindex] = temp;
         }
     }
     private List<string> GenerateRandomList()
@@ -82,37 +88,70 @@ public class MonsterManager : MonoBehaviour
         List<string> randList = new List<string> ();
         for (int i = 0; i < 2; i++)
         {
-            int num = Random.Range(0, 4);
+            int num = Random.Range(0, 3);
             while (randList.Contains(itemList1[num]))
             {
-                num = Random.Range(0, 4);
+                num = Random.Range(0, 3);
             }
             randList.Add(itemList1[num]);
-            num = Random.Range(0, 4);
+            num = Random.Range(0, 3);
             while (randList.Contains(itemList2[num]))
             {
-                num = Random.Range(0, 4);
+                num = Random.Range(0, 3);
             }
             randList.Add(itemList2[num]);
         }
         return randList;
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if(count == nRecipes && completed_recipes >= 4)
+        {
+            // Players Win
+        }
+        else if(count == nRecipes)
+        {
+            // Players lose
+        }
+        if(timer.Done)
+        {
+            if(mAvailableList.Count > 0)
+            {
+                if(mAvailableList.Count != 1)
+                    ShuffleList<int>(mAvailableList, mAvailableList.Count);
+                WakeUpMonster(mAvailableList[0]);
+                timer.SetTime(rDelay, "MonsterManager");
+            }
+            
+        }
     }
 
-   
-    public void setAwake(int monster_num, bool set)
-    {
-        awakeList[monster_num - 1] = set; 
-    }
+    // might be redundant 
+    //public void SetAwake(int monster_num, bool set) 
+    //{
+    //    awakeList[monster_num] = set; 
+    //}
 
     private void WakeUpMonster(int monster_num)
     {
-        setAwake(monster_num, true); // Sets monster(monster_num) to be awake and starts timing it.
-        gameObject.transform.Find(mList[monster_num]).GetComponent<Monster>().WakeUp(MyRecipes[count].items);  // Wakes up a monster and sends it a recipe to complete. 
+        //SetAwake(monster_num, true); // Sets monster(monster_num) to be awake and starts timing it.
+        mAvailableList.Remove(monster_num);
+        gameObject.transform.Find(mList[monster_num]).GetComponent<Monster>().WakeUp(MyRecipes[count].items, mList[monster_num], monster_num);  // Wakes up a monster and sends it a recipe to complete. 
         count++;
+        timer.SetTime(rDelay, "MonsterManager");
+    }
+
+    public void AlertManager_RecipeComplete(int monster_num)
+    {
+        mAvailableList.Add(monster_num);
+        //SetAwake(monster_num, false);
+        completed_recipes++;
+    }
+
+    public void AlertManager_TimedOut(int monster_num)
+    {
+        mAvailableList.Add(monster_num);
+        unfinished_recipes++;
     }
 }

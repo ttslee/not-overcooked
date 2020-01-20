@@ -43,3 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3ee9cc44273664a882e4ff1a952adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DarkOre: {fileID: 4639506938558671751, guid: 6db934f5df123ce438fcc3e1111fb1d7, type: 3}
+  RedOre: {fileID: -6099050445329199328, guid: 6db934f5df123ce438fcc3e1111fb1d7, type: 3}
+  WitheredSkull: {fileID: -7855203551248514480, guid: 6db934f5df123ce438fcc3e1111fb1d7,
+    type: 3}
+  BurnedSkull: {fileID: -2064859774160998932, guid: 6db934f5df123ce438fcc3e1111fb1d7,
+    type: 3}
+  WitheredRat: {fileID: -3694533877916086887, guid: 6db934f5df123ce438fcc3e1111fb1d7,
+    type: 3}
+  BurnedRat: {fileID: 2029542551908640097, guid: 6db934f5df123ce438fcc3e1111fb1d7,
+    type: 3}
+  item7: {fileID: 0}
+  item8: {fileID: 0}

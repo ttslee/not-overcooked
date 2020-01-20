@@ -54,11 +54,11 @@ public class Timer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if(!Done)
         {
-            T -= Time.fixedDeltaTime;
+            T -= Time.deltaTime;
             if (T <= 0)
             {
                 Done = true;

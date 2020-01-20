@@ -6,6 +6,7 @@ public class Monster : MonoBehaviour
 {
     //Monster info
     private bool mDone = false; // Bool for checking whether the recipe is complete
+    private int monster_num;
 
     //Recipe info
     private int currentItem;
@@ -25,7 +26,7 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private List<string> recipe;
+    public List<string> recipe;
 
     public List<string> Recipe
     {
@@ -54,10 +55,13 @@ public class Monster : MonoBehaviour
             numItemsLeft = value;
         }
     }
+
+    //Timer
+    private Timer timer;
     // Start is called before the first frame update
     void Start()
     {
-        
+        timer = gameObject.GetComponent<Timer>();   
     }
 
     // Update is called once per frame
@@ -65,11 +69,11 @@ public class Monster : MonoBehaviour
     {
         if(HasRecipe)
         {
-            if(TimerDone())
-            {
-                HasRecipe = false;
-                mDone = true;
-            }
+            if (NumItemsLeft == 0)
+                gameObject.GetComponentInParent<MonsterManager>().AlertManager_RecipeComplete(monster_num);
+            if(timer.Done && NumItemsLeft > 0)
+                gameObject.GetComponentInParent<MonsterManager>().AlertManager_TimedOut(monster_num);
+            
         }
     }
 
@@ -88,23 +92,19 @@ public class Monster : MonoBehaviour
         }
     }
 
-    public void WakeUp(List<string> r)
+    public void WakeUp(List<string> r, string nm, int mNum)
     {
+        monster_num = mNum;
         recipe = r;
         HasRecipe = true;
         currentItem = 0;
-        GetComponent<Timer>().SetTime(25f, "Monster");
+        GetComponent<Timer>().SetTime(25f, nm);
         setFloatingSprite(recipe[currentItem]);
     }
 
     private void Spit(Collider2D collision)
     {
 
-    }
-
-    public bool TimerDone()
-    {
-        return GetComponent<Timer>().Done;
     }
 
     private void setFloatingSprite(string item)
