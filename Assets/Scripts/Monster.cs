@@ -99,7 +99,7 @@ public class Monster : MonoBehaviour
             print("CALLED");
             NumItemsLeft -= 1;
             currentItem++;
-            animator.SetFloat("Chomp", 1.0f);
+            animator.SetTrigger("Chomp");
             collision.gameObject.GetComponent<ItemPickup>().Kill();
             setFloatingSprite(recipe[currentItem]);
         }
