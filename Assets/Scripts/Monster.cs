@@ -74,21 +74,27 @@ public class Monster : MonoBehaviour
             {
                 gameObject.GetComponentInParent<MonsterManager>().AlertManager_RecipeComplete(monster_num);
                 GetComponentInChildren<MonsterSprite>().RemoveImage();
+                HasRecipe = false;
             }
             if(timer.Done && NumItemsLeft > 0)
             {
                 gameObject.GetComponentInParent<MonsterManager>().AlertManager_TimedOut(monster_num);
                 GetComponentInChildren<MonsterSprite>().RemoveImage();
+                HasRecipe = false;
             }
                 
             
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) // Pick up the correct item
+    private void OnTriggerStay2D(Collider2D collision) // Pick up the correct item
     {
-        if(collision.gameObject.name == recipe[currentItem])
+        print(collision.name);
+        if (!HasRecipe)
+            return;
+        if(collision.name == recipe[currentItem])
         {
+            print("CALLED");
             NumItemsLeft -= 1;
             currentItem++;
             collision.gameObject.GetComponent<ItemPickup>().Kill();
@@ -117,6 +123,6 @@ public class Monster : MonoBehaviour
 
     private void setFloatingSprite(string name)
     {
-        GetComponentInChildren<MonsterSprite>().SetSprite(GetComponentInParent<AllItems>().SpriteDictionary[name]);
+        GetComponentInChildren<MonsterSprite>().SetSprite(GetComponentInParent<MonsterManager>().SpriteDictionary[name]);
     }
 }
