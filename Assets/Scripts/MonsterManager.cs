@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonsterManager : MonoBehaviour
 {
     // Recipes/ItemList
-    public int numRecipes = 6;
+    private int count = 0;
     [System.Serializable]
     public class Recipes
     {
@@ -46,6 +46,11 @@ public class MonsterManager : MonoBehaviour
     private float timer1 = 25f;
     private float timer2 = 25f;
     private float timer3 = 25f;
+
+    // Monster Management
+    private static List<string> mList = new List<string>{ "Monster1", "Monster2", "Monster3" };
+
+    private static List<bool> awakeList = new List<bool> { false, false, false };  // List of monsters that currently have a recipe.
     // Start is called before the first frame update
     void Start()
     {
@@ -91,5 +96,26 @@ public class MonsterManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void FixedUpdate()
+    {
+        if (awakeList[0])
+            timer1 -= Time.deltaTime;
+        if (awakeList[1])
+            timer2 -= Time.deltaTime;
+        if (awakeList[2])
+            timer3 -= Time.deltaTime;
+    }
+    public void setAwake(int monster_num, bool setAwake)
+    {
+        awakeList[monster_num - 1] = setAwake; 
+    }
+
+    private void WakeUpMonster(int monster_num)
+    {
+        setAwake(monster_num, true);
+        gameObject.transform.Find(mList[monster_num]).GetComponent<Monster>().WakeUp(MyRecipes[count].items);
+        count++;
     }
 }
