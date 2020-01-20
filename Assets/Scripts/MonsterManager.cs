@@ -48,6 +48,7 @@ public class MonsterManager : MonoBehaviour
     private float timer3 = 25f;
 
     // Monster Management
+    private int nMonsters = 3;
     private static List<string> mList = new List<string>{ "Monster1", "Monster2", "Monster3" };
 
     private static List<bool> awakeList = new List<bool> { false, false, false };  // List of monsters that currently have a recipe.
@@ -59,14 +60,14 @@ public class MonsterManager : MonoBehaviour
         for(int n = 0; n < 6; ++n)
         {
             List<string> randomList = GenerateRandomList();
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < nMonsters + 1; i++)
             {
                 string temp = randomList[i];
-                int randomindex = Random.Range(i, 4);
+                int randomindex = Random.Range(i, nMonsters + 1);
                 randomList[i] = randomList[randomindex];
                 randomList[randomindex] = temp;
             }
-            for (int j = 0; j < 4; j++)
+            for (int j = 0; j < nMonsters + 1; j++)
             {
                 MyRecipes[n].items.Add(randomList[j]);
             }
@@ -77,16 +78,16 @@ public class MonsterManager : MonoBehaviour
         List<string> randList = new List<string> ();
         for (int i = 0; i < 2; i++)
         {
-            int num = Random.Range(0, 4);
+            int num = Random.Range(0, nMonsters + 1);
             while (randList.Contains(itemList1[num]))
             {
-                num = Random.Range(0, 4);
+                num = Random.Range(0, nMonsters + 1);
             }
             randList.Add(itemList1[num]);
-            num = Random.Range(0, 4);
+            num = Random.Range(0, nMonsters + 1);
             while (randList.Contains(itemList2[num]))
             {
-                num = Random.Range(0, 4);
+                num = Random.Range(0, nMonsters + 1);
             }
             randList.Add(itemList2[num]);
         }
@@ -114,8 +115,8 @@ public class MonsterManager : MonoBehaviour
 
     private void WakeUpMonster(int monster_num)
     {
-        setAwake(monster_num, true);
-        gameObject.transform.Find(mList[monster_num]).GetComponent<Monster>().WakeUp(MyRecipes[count].items);
+        setAwake(monster_num, true); // Sets monster(monster_num) to be awake and starts timing it.
+        gameObject.transform.Find(mList[monster_num]).GetComponent<Monster>().WakeUp(MyRecipes[count].items);  // Wakes up a monster and sends it a recipe to complete. 
         count++;
     }
 }

@@ -10,7 +10,7 @@ public class MonsterSprite : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.localPosition = new Vector3(0f, startY, 0f);
+        //transform.localPosition = new Vector3(0f, startY, 0f);
     }
 
     // Update is called once per frame
