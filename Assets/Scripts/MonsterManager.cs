@@ -54,7 +54,7 @@ public class MonsterManager : MonoBehaviour
     // Monster Management
     private static List<string> mList = new List<string>{ "Monster1", "Monster2", "Monster3" };
     private static List<int>    mAvailableList = new List<int> { 0, 1, 2 };
-    private static List<bool>   awakeList = new List<bool> { false, false, false };  // List of monsters that currently have a recipe.
+    //private static List<bool>   awakeList = new List<bool> { false, false, false };  // List of monsters that currently have a recipe.
     // Start is called before the first frame update
     public void Start()
     {
@@ -63,24 +63,27 @@ public class MonsterManager : MonoBehaviour
         for(int n = 0; n < nRecipes; ++n)
         {
             List<string> randomList = GenerateRandomList();
-            ShuffleList<string>(randomList, recipeSize);
+            ShuffleList<string>(randomList);
             for (int j = 0; j < recipeSize; j++)
             {
                 MyRecipes[n].items.Add(randomList[j]);
             }
         }
-        ShuffleList<int>(mAvailableList, mAvailableList.Count);
+        ShuffleList<int>(mAvailableList);
         WakeUpMonster(mAvailableList[0]);
+        
     }
 
-    private void ShuffleList<T>(List<T> list, int sz)
+    public static void ShuffleList<T>(List<T> ts)
     {
-        for (int i = 0; i < sz; i++)
+        var count = ts.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i)
         {
-            T temp = list[i];
-            int randomindex = Random.Range(i, sz-1);
-            list[i] = list[randomindex];
-            list[randomindex] = temp;
+            var r = Random.Range(i, count);
+            var tmp = ts[i];
+            ts[i] = ts[r];
+            ts[r] = tmp;
         }
     }
     private List<string> GenerateRandomList()
@@ -110,16 +113,15 @@ public class MonsterManager : MonoBehaviour
         {
             // Players Win
         }
-        else if(count == nRecipes)
+        else if(unfinished_recipes == nRecipes)
         {
-            // Players lose
+            Application.Quit();
         }
         if(timer.Done)
         {
             if(mAvailableList.Count > 0)
             {
-                if(mAvailableList.Count != 1)
-                    ShuffleList<int>(mAvailableList, mAvailableList.Count);
+                ShuffleList<int>(mAvailableList);
                 WakeUpMonster(mAvailableList[0]);
                 timer.SetTime(rDelay, "MonsterManager");
             }

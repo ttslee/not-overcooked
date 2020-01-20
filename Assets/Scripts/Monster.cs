@@ -58,6 +58,7 @@ public class Monster : MonoBehaviour
 
     //Timer
     private Timer timer;
+    private float waitTime = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -105,7 +106,7 @@ public class Monster : MonoBehaviour
         recipe = r;
         HasRecipe = true;
         currentItem = 0;
-        GetComponent<Timer>().SetTime(7f, nm);
+        GetComponent<Timer>().SetTime(waitTime, nm);
         setFloatingSprite(recipe[currentItem]);
     }
 
