@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3424505039578565819}
   m_Layer: 0
   m_Name: Monster 1
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,41 +143,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MSprite
-      objectReference: {fileID: 0}
-    - target: {fileID: 8305303301346973316, guid: 283c2314bf006f54087be15db9ca945d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8305303301346973316, guid: 283c2314bf006f54087be15db9ca945d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.5153866
-      objectReference: {fileID: 0}
-    - target: {fileID: 8305303301346973316, guid: 283c2314bf006f54087be15db9ca945d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.6678143
-      objectReference: {fileID: 0}
-    - target: {fileID: 8305303301346973316, guid: 283c2314bf006f54087be15db9ca945d,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8305303301346973316, guid: 283c2314bf006f54087be15db9ca945d,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8305303301346973316, guid: 283c2314bf006f54087be15db9ca945d,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8305303301346973316, guid: 283c2314bf006f54087be15db9ca945d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8305303301346973316, guid: 283c2314bf006f54087be15db9ca945d,
         type: 3}
