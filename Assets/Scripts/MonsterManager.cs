@@ -6,6 +6,7 @@ public class MonsterManager : MonoBehaviour
 {
     // Recipes/ItemList
     private int count = 0;
+    
     [System.Serializable]
     public class Recipes
     {
@@ -43,15 +44,15 @@ public class MonsterManager : MonoBehaviour
     };
 
     // ManagerTimer
-    private float timer1 = 25f;
-    private float timer2 = 25f;
-    private float timer3 = 25f;
+    private float rDelay = 5f;
 
     // Monster Management
     private int nMonsters = 3;
     private static List<string> mList = new List<string>{ "Monster1", "Monster2", "Monster3" };
 
     private static List<bool> awakeList = new List<bool> { false, false, false };  // List of monsters that currently have a recipe.
+
+    private Queue<string> monsterQueue;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,17 +61,20 @@ public class MonsterManager : MonoBehaviour
         for(int n = 0; n < 6; ++n)
         {
             List<string> randomList = GenerateRandomList();
-            for (int i = 0; i < nMonsters + 1; i++)
+            for (int i = 0; i < 4; i++)
             {
                 string temp = randomList[i];
-                int randomindex = Random.Range(i, nMonsters + 1);
+                int randomindex = Random.Range(i, 4);
                 randomList[i] = randomList[randomindex];
                 randomList[randomindex] = temp;
             }
-            for (int j = 0; j < nMonsters + 1; j++)
+            for (int j = 0; j < 4; j++)
             {
                 MyRecipes[n].items.Add(randomList[j]);
             }
+        }
+        for(int i = 0; i < nMonsters; ++i)
+        {
         }
     }
     private List<string> GenerateRandomList()
@@ -78,16 +82,16 @@ public class MonsterManager : MonoBehaviour
         List<string> randList = new List<string> ();
         for (int i = 0; i < 2; i++)
         {
-            int num = Random.Range(0, nMonsters + 1);
+            int num = Random.Range(0, 4);
             while (randList.Contains(itemList1[num]))
             {
-                num = Random.Range(0, nMonsters + 1);
+                num = Random.Range(0, 4);
             }
             randList.Add(itemList1[num]);
-            num = Random.Range(0, nMonsters + 1);
+            num = Random.Range(0, 4);
             while (randList.Contains(itemList2[num]))
             {
-                num = Random.Range(0, nMonsters + 1);
+                num = Random.Range(0, 4);
             }
             randList.Add(itemList2[num]);
         }
@@ -99,18 +103,10 @@ public class MonsterManager : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
+   
+    public void setAwake(int monster_num, bool set)
     {
-        if (awakeList[0])
-            timer1 -= Time.deltaTime;
-        if (awakeList[1])
-            timer2 -= Time.deltaTime;
-        if (awakeList[2])
-            timer3 -= Time.deltaTime;
-    }
-    public void setAwake(int monster_num, bool setAwake)
-    {
-        awakeList[monster_num - 1] = setAwake; 
+        awakeList[monster_num - 1] = set; 
     }
 
     private void WakeUpMonster(int monster_num)

@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     //Item Pickup
     private GameObject it;
     private Transform item;
-    private float timer = .4f;
     private bool dropped = false;
 
     public Transform Item
@@ -50,10 +49,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private Timer timer;
     private void Start()
     {
         horizontal = (player == 1) ? "Horizontal" : "Horizontal2";
         vertical = (player == 1) ? "Vertical" : "Vertical2";
+        timer = gameObject.GetComponent<Timer>();
     }
 
     void Update()
@@ -87,16 +88,11 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         playerBody.MovePosition(playerBody.position + movement * moveSpd * Time.fixedDeltaTime);
-        if(timer <= 0)
+        if(timer.Done)
         {
             dropped = false;
-            timer = .4f;
         }
-        if(dropped)
-        {
-            timer -= Time.fixedDeltaTime;
-        }
-        else if(IsHoldingItem)
+        if(IsHoldingItem)
             setItemPosition();
     }
 
@@ -176,6 +172,7 @@ public class PlayerController : MonoBehaviour
     private void timerStart()
     {
         dropped = true;
+        timer.SetTime(.4f, "Player");
     }
 
     private string calcLocalPos()

@@ -33,6 +33,7 @@ public class ItemPickup : MonoBehaviour
             holder = value;
             image.sortingOrder = 2;
             gameObject.GetComponentsInChildren<SpriteRenderer>()[1].enabled = false;
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
     }
 
@@ -64,5 +65,6 @@ public class ItemPickup : MonoBehaviour
         dropped = true;
         image.sortingOrder = 0;
         gameObject.GetComponentsInChildren<SpriteRenderer>()[1].enabled = true;
+        gameObject.GetComponent<CircleCollider2D>().enabled = true;
     }
 }
