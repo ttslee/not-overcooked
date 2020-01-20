@@ -8,7 +8,7 @@ public class Monster : MonoBehaviour
     private bool mDone = false; // Bool for checking whether the recipe is complete
 
     //Recipe info
-    private string currentItem;
+    private int currentItem;
     
     private bool hasRecipe = false;
 
@@ -61,7 +61,7 @@ public class Monster : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(HasRecipe)
         {
@@ -75,10 +75,12 @@ public class Monster : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) // Pick up the correct item
     {
-        if(collision.gameObject.name == currentItem)
+        if(collision.gameObject.name == recipe[currentItem])
         {
             NumItemsLeft -= 1;
+            currentItem++;
             collision.gameObject.GetComponent<ItemPickup>().Kill();
+            setFloatingSprite(recipe[currentItem]);
         }
         else
         {
@@ -90,8 +92,9 @@ public class Monster : MonoBehaviour
     {
         recipe = r;
         HasRecipe = true;
-        currentItem = r[0];
+        currentItem = 0;
         GetComponent<Timer>().SetTime(25f, "Monster");
+        setFloatingSprite(recipe[currentItem]);
     }
 
     private void Spit(Collider2D collision)
@@ -102,5 +105,10 @@ public class Monster : MonoBehaviour
     public bool TimerDone()
     {
         return GetComponent<Timer>().Done;
+    }
+
+    private void setFloatingSprite(string item)
+    {
+
     }
 }
