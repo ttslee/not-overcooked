@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 5640446224794692105
     second: Bat_Run_2
+  - first:
+      213: 1798046897668719803
+    second: Bat_Run_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -121,7 +124,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ad89d763ca78614f826f07b26e9fd01
+      spriteID: 3c8f8829d97d97342bc81968f3562e00
       internalID: -7960056978225911515
       vertices: []
       indices: 
@@ -142,7 +145,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f69cb88a89826e948a356cde7bd783c6
+      spriteID: 162045e43e934534f8a5035d0398939f
       internalID: 4058304911313277669
       vertices: []
       indices: 
@@ -163,8 +166,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df966b84240e16843895106c67d80dae
+      spriteID: d6165b9d12750b640a391f579aea38dd
       internalID: 5640446224794692105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bat_Run_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27af40906dcf22343a4a3e69fdf01cef
+      internalID: 1798046897668719803
       vertices: []
       indices: 
       edges: []
