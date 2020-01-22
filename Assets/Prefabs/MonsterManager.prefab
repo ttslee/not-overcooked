@@ -107,10 +107,10 @@ MonoBehaviour:
       type: 3}
   - name: burnt rat
     image: {fileID: 2029542551908640097, guid: 6db934f5df123ce438fcc3e1111fb1d7, type: 3}
-  - name: rotten eye
+  - name: rotten meat
     image: {fileID: -2821042892349479055, guid: 6db934f5df123ce438fcc3e1111fb1d7,
       type: 3}
-  - name: burnt eye
+  - name: burnt meat
     image: {fileID: -4261047623482395726, guid: 6db934f5df123ce438fcc3e1111fb1d7,
       type: 3}
 --- !u!114 &2272573399914188693

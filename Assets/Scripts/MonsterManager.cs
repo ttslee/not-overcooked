@@ -36,14 +36,14 @@ public class MonsterManager : MonoBehaviour
     {
             "red ore",
             "burnt rat",
-            "burnt eye",
+            "burnt meat",
             "burnt skull",
     };
     private static List<string> itemList2 = new List<string>
     {
             "dark ore",
             "rotten rat",
-            "rotten eye",
+            "rotten meat",
             "rotten skull",
     };
 

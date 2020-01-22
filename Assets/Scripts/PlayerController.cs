@@ -59,6 +59,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))
+            QuitGame();
         movement.x = Input.GetAxisRaw(horizontal);
         movement.y = Input.GetAxisRaw(vertical);
         movement = movement.normalized; 
@@ -189,5 +191,16 @@ public class PlayerController : MonoBehaviour
             return "up";
         else
             return "none";
+    }
+    public void QuitGame()
+    {
+        // save any game data here
+        #if UNITY_EDITOR
+        // Application.Quit() does not work in the editor so
+        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+         Application.Quit();
+        #endif
     }
 }
