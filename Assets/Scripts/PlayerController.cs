@@ -125,7 +125,6 @@ public class PlayerController : MonoBehaviour
     private void Drop()
     {
         Item.parent = null;
-        it.GetComponent<CircleCollider2D>().enabled = true;
         it.GetComponent<ItemPickup>().Drop(calcLocalPos());
         dropped = true;
         IsHoldingItem = false;
@@ -174,7 +173,7 @@ public class PlayerController : MonoBehaviour
 
     private void timerStart()
     {
-        timer.SetTime(.4f, "Player");
+        timer.SetTime(1.0f, "Player");
     }
 
     private string calcLocalPos()

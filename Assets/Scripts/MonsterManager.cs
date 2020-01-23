@@ -31,7 +31,14 @@ public class MonsterManager : MonoBehaviour
             myRecipes = value;
         }
     }
-
+    private static List<string> potionList = new List<string>
+    {
+        "red potion",
+        "blue potion",
+        "green potion",
+        "purple potion",
+        "orange potion",
+    };
     private static List<string> itemList1 = new List<string> 
     {
             "red ore",
