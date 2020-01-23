@@ -2,6 +2,8 @@
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject projectile;
+    public float fspeed;
     //Player
     public int player = 1;
 
@@ -82,6 +84,14 @@ public class PlayerController : MonoBehaviour
             case 2:
                 if (Input.GetKeyDown("right ctrl") && IsHoldingItem)
                     Drop();
+                break;
+            case 3:
+                if (Input.GetKeyDown("t"))
+                    Projectile();
+                break;
+            case 4:
+                if (Input.GetKeyDown("enter"))
+                    Projectile();
                 break;
         }
 
@@ -170,6 +180,15 @@ public class PlayerController : MonoBehaviour
         Item.transform.position = new Vector3(Item.position.x,
         Item.position.y + ((float)Mathf.Sin(Time.time) * floatStrength), 1f);
         
+    }
+
+    private void Projectile()
+    {
+        Vector2 Direction = new Vector2(1, 0);
+        Direction = Direction.normalized * fspeed;
+        GameObject newProjectile = (GameObject) Instantiate(projectile, transform.position, transform.rotation);
+        newProjectile.GetComponent<Rigidbody2D>().velocity = Direction;
+        Destroy(newProjectile, 5);
     }
 
     private void timerStart()
