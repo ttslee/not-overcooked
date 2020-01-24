@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
+    // Cauldron
+    private bool cauldronDone = false;
+    private bool cauldronTimedOut = false;
     // Recipes/ItemList
     private int nRecipes = 6;
     private int recipeSize = 4;
@@ -33,11 +36,11 @@ public class MonsterManager : MonoBehaviour
     }
     private static List<string> potionList = new List<string>
     {
-        "red potion",
-        "blue potion",
-        "green potion",
-        "purple potion",
-        "orange potion",
+            "red potion",
+            "blue potion",
+            "green potion",
+            "purple potion",
+            "orange potion",
     };
     private static List<string> itemList1 = new List<string> 
     {
@@ -88,6 +91,7 @@ public class MonsterManager : MonoBehaviour
         // Fill Dictionary of Items
         foreach (var item in sprites)
         {
+            print(item.name);
             spriteDictionary.Add(item.name, item.image);
         }
 
@@ -102,9 +106,10 @@ public class MonsterManager : MonoBehaviour
                 MyRecipes[n].items.Add(randomList[j]);
             }
         }
+        ShuffleList<string>(potionList);
         ShuffleList<int>(mAvailableList);
         WakeUpMonster(mAvailableList[0]);
-        
+        WakeUpCauldron();
     }
 
     public static void ShuffleList<T>(List<T> ts)
@@ -142,11 +147,17 @@ public class MonsterManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(count == nRecipes && completed_recipes >= 4)
+        if(cauldronDone)
         {
-            // Players Win
+            // Player wins
+            QuitGame();
         }
-        else if(unfinished_recipes == nRecipes)
+        else if(cauldronTimedOut)
+        {
+            QuitGame();
+        }
+
+        if(unfinished_recipes == nRecipes)
         {
             //Player loses
             print("completed" + completed_recipes);
@@ -165,7 +176,12 @@ public class MonsterManager : MonoBehaviour
         }
     }
 
-   // Wake up monster and pass it a recipe to complete
+    // Wake up monster and pass it a recipe to complete
+    private void WakeUpCauldron()
+    {
+        gameObject.transform.Find("Cauldron").GetComponent<CauldronScript>().WakeUp(potionList);
+    }
+
     private void WakeUpMonster(int monster_num)
     {
         mAvailableList.Remove(monster_num);
@@ -184,5 +200,27 @@ public class MonsterManager : MonoBehaviour
     {
         mAvailableList.Add(monster_num);
         unfinished_recipes++;
+    }
+
+    public void AlertManager_CauldronRecipeComplete()
+    {
+        cauldronDone = true;
+    }
+
+    public void AlertManager_CauldronTimedOut()
+    {
+        cauldronTimedOut = true;
+    }
+
+    public void QuitGame()
+    {
+        // save any game data here
+        #if UNITY_EDITOR
+        // Application.Quit() does not work in the editor so
+        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
     }
 }

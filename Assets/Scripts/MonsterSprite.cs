@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MonsterSprite : MonoBehaviour
 {
-    float speed = 3f;
-    float height = .2f;
+    public float speed;
+    public float height;
     public float startY;
     // Start is called before the first frame update
     void Start()
