@@ -74,7 +74,7 @@ public class CauldronScript : MonoBehaviour
                 gameObject.GetComponentInParent<MonsterManager>().AlertManager_CauldronRecipeComplete();
                 GetComponentInChildren<MonsterSprite>().RemoveImage();
             }
-            if (timer.Done && NumItemsLeft > 0)
+            else if (timer.Done && NumItemsLeft > 0)
             {
                 gameObject.GetComponentInParent<MonsterManager>().AlertManager_CauldronTimedOut();
                 GetComponentInChildren<MonsterSprite>().RemoveImage();
