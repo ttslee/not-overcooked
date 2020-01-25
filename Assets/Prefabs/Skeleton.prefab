@@ -168,3 +168,11 @@ MonoBehaviour:
   - {fileID: 0}
   moveSpd: 1
   stoppingDistance: 0
+  isWandering: 0
+  animator: {fileID: 2520970098649846058}
+  moveSpot: {fileID: 0}
+  waitTime: 2
+  minX: -9.5
+  maxX: 9.5
+  minY: -12.5
+  maxY: 6.5
