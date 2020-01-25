@@ -16,18 +16,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
---- !u!114 &6751110387080126591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4462364557971105049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8be1da405eb97c14ea995db35fea5de5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6902183899962584211
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,7 +29,6 @@ GameObject:
   - component: {fileID: 6902183899962584210}
   - component: {fileID: 6902183899962584239}
   - component: {fileID: 2272573399914188693}
-  - component: {fileID: 3947697601921956558}
   m_Layer: 0
   m_Name: MonsterManager
   m_TagString: Untagged
@@ -167,20 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be1da405eb97c14ea995db35fea5de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3947697601921956558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6902183899962584211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f162637cddc2f45bb71640abba97ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recipe: []
-  animator: {fileID: 0}
 --- !u!1001 &6902183900331745293
 PrefabInstance:
   m_ObjectHideFlags: 0
