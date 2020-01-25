@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     //Player
     public int player = 1;
-
+    private int health = 3;
     //Animation
     public Animator animator;
     float originalPos = 0;
@@ -201,5 +201,9 @@ public class PlayerController : MonoBehaviour
         #else
          Application.Quit();
         #endif
+    }
+    public void TakeDamage()
+    {
+        Health--;
     }
 }

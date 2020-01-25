@@ -102,7 +102,6 @@ public class CauldronScript : MonoBehaviour
 
     public void WakeUp(List<string> r)
     {
-        print("HERETOO");
         Recipe = r;
         HasRecipe = true;
         currentItem = 0;
