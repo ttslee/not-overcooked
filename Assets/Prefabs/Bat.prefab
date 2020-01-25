@@ -223,9 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405508cc5d59d5942b40ad0596cc88e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
+  players: []
   moveSpd: 1
   stoppingDistance: 3
   isWandering: 0
