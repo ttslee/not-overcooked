@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7606614446619366523}
   - component: {fileID: 2804905517590148474}
   - component: {fileID: 4343139511233029387}
+  - component: {fileID: 3841370507998468829}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player1
@@ -185,9 +186,23 @@ MonoBehaviour:
   animator: {fileID: -7623992862134333245}
   moveSpd: 5
   playerBody: {fileID: 2804905518723522797}
+  pickupTimer: {fileID: 4343139511233029387}
+  shootTimer: {fileID: 3841370507998468829}
   Fire: {fileID: 6085665167331234766, guid: 7f2643118b8739b40aa66939499b3efe, type: 3}
   Death: {fileID: 3225794335417814527, guid: 460a1be85bbbdcc41831753f78e37bdf, type: 3}
 --- !u!114 &4343139511233029387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2804905517590148475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be1da405eb97c14ea995db35fea5de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3841370507998468829
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
