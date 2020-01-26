@@ -159,6 +159,7 @@ public class MonsterManager : MonoBehaviour
 
         if(unfinished_recipes == nRecipes)
         {
+            QuitGame();
             //Player loses
             print("completed" + completed_recipes);
             print("unfinished" + unfinished_recipes);
