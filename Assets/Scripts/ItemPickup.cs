@@ -37,6 +37,7 @@ public class ItemPickup : MonoBehaviour
         }
     }
 
+    // NOT IMPLEMENTED YET
     private void Update()
     {
         if(dropped)

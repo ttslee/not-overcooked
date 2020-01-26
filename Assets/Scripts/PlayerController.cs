@@ -5,6 +5,19 @@ public class PlayerController : MonoBehaviour
     //Player
     public int player = 1;
     private int health = 3;
+
+    public int Health
+    {
+        get
+        {
+            return health;
+        }
+
+        set
+        {
+            health = value;
+        }
+    }
     //Animation
     public Animator animator;
     float originalPos = 0;
@@ -21,35 +34,25 @@ public class PlayerController : MonoBehaviour
     private Transform item;
     private bool dropped = false;
 
-    public Transform Item
-    {
-        get
-        {
-            return item;
-        }
-
-        set
-        {
-            item = value;
-        }
-    }
+    public Transform Item { get { return item; } set { item = value; } }
 
     private bool isHoldingItem = false;
 
-    public bool IsHoldingItem
-    {
-        get
-        {
-            return isHoldingItem;
-        }
+    public bool IsHoldingItem { get { return isHoldingItem; } set { isHoldingItem = value; } }
 
-        set
-        {
-            isHoldingItem = value;
-        }
-    }
+    // Element
+    private string element;
+    private bool hasElement;
+
+    public string Element { get { return element; } set { element = value; } }
 
     private Timer timer;
+
+    // Weapon
+    public GameObject Fire;
+    public GameObject Death;
+    // Update is called once per frame
+
     private void Start()
     {
         horizontal = (player == 1) ? "Horizontal" : "Horizontal2";
@@ -76,12 +79,16 @@ public class PlayerController : MonoBehaviour
         switch(player)
         {
             case 1:
-                if (Input.GetKeyDown("e") && IsHoldingItem)
+                if (Input.GetKey(KeyCode.E) && IsHoldingItem)
                     Drop();
+                else if (Input.GetKey(KeyCode.Q) && hasElement)
+                    Shoot();
                 break;
             case 2:
-                if (Input.GetKeyDown("right ctrl") && IsHoldingItem)
+                if (Input.GetKey(KeyCode.RightShift) && IsHoldingItem)
                     Drop();
+                else if (Input.GetKey(KeyCode.RightControl) && hasElement)
+                    Shoot();
                 break;
         }
 
@@ -102,19 +109,35 @@ public class PlayerController : MonoBehaviour
     {
         if (!IsHoldingItem && !dropped && collision.gameObject.CompareTag("Item") && collision.gameObject.GetComponent<ItemPickup>().Holder == 0)
         {
+            switch (collision.gameObject.name)
+            {
+                case "FireElement":
+                case "DeathElement":
+                    Element = collision.gameObject.name;
+                    hasElement = true;
+                    break;
+            }
             IsHoldingItem = true;
             it = collision.gameObject;
             it.GetComponent<CircleCollider2D>().enabled = false;
             it.GetComponent<ItemPickup>().Holder = player;
             PickUp(collision);
         }
-            
+
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (!IsHoldingItem && !dropped && other.gameObject.CompareTag("Item") && other.gameObject.GetComponent<ItemPickup>().Holder == 0)
         {
+            switch (other.gameObject.name)
+            {
+                case "FireElement":
+                case "DeathElement":
+                    Element = other.gameObject.name;
+                    hasElement = true;
+                    break;
+            }
             IsHoldingItem = true;
             it = other.gameObject;
             it.GetComponent<CircleCollider2D>().enabled = false;
@@ -128,6 +151,8 @@ public class PlayerController : MonoBehaviour
         it.GetComponent<ItemPickup>().Drop(calcLocalPos());
         dropped = true;
         IsHoldingItem = false;
+        hasElement = false;
+        Element = "";
         it = null;
         Item = null;
         originalPos = 0;
@@ -164,16 +189,14 @@ public class PlayerController : MonoBehaviour
             Item.localPosition = new Vector3(.4f, 0, 1f);
             originalPos = 0.4f;
         }
-        
 
-        Item.transform.position = new Vector3(Item.position.x,
-        Item.position.y + ((float)Mathf.Sin(Time.time) * floatStrength), 1f);
-        
+
+        Item.transform.position = new Vector3(Item.position.x, Item.position.y + ((float)Mathf.Sin(Time.time) * floatStrength), 1f);
     }
 
     private void timerStart()
     {
-        timer.SetTime(1.0f, "Player");
+        timer.SetTime(0.8f, "Player");
     }
 
     private string calcLocalPos()
@@ -205,5 +228,19 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage()
     {
         Health--;
+    }
+    public void Shoot()
+    {
+        if (Element == "FireElement")
+        {
+            Instantiate(Fire, Item.position, Item.rotation);
+            Fire.GetComponent<ProjectileScript>().SetProjectile((player == 1) ? "Player1" : "Player2", calcLocalPos());
+        }  
+        else
+        {
+            Instantiate(Death, Item.position, Item.rotation);
+            Death.GetComponent<ProjectileScript>().SetProjectile((player == 1) ? "Player1" : "Player2", calcLocalPos());
+        }
+
     }
 }

@@ -84,7 +84,6 @@ public class CauldronScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision) // Pick up the correct item
     {
-        print(collision.name);
         if (!HasRecipe)
             return;
         if (collision.name == recipe[currentItem])

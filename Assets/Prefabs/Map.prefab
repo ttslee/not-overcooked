@@ -4061,7 +4061,7 @@ GameObject:
   - component: {fileID: 5611003104903565311}
   m_Layer: 0
   m_Name: Collidable
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

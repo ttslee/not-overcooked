@@ -6,10 +6,9 @@ public class InteractionScript : MonoBehaviour
 {
     public GameObject itemSpawn;
 
-    [SerializeField]
-    private Sprite item1;
-    [SerializeField]
-    public Sprite item2;
+    
+    public Sprite itemFire;
+    public Sprite itemDeath;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,22 +21,23 @@ public class InteractionScript : MonoBehaviour
         
     }
 
-    public void OnTriggerStay2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         switch(collision.gameObject.name)
         { 
             case "Player1":
             case "Player2":
-                collision.gameObject.GetComponent<PlayerController>().TakeDamage();
+                if(gameObject.name != "Rock")
+                    collision.gameObject.GetComponent<PlayerController>().TakeDamage();
                 break;
             case "Fire":
-                itemSpawn.GetComponent<SpriteRenderer>().sprite = item1;
-                Instantiate(itemSpawn, null);
-                break;
             case "Death":
-                itemSpawn.GetComponent<SpriteRenderer>().sprite = item2;
-                Instantiate(itemSpawn, null);
+                itemSpawn.GetComponent<SpriteRenderer>().sprite = (collision.gameObject.name == "Fire") ? itemFire : itemDeath;
+                itemSpawn.GetComponent<SpriteRenderer>().enabled = true;
+                itemSpawn.GetComponent<CircleCollider2D>().enabled = true;
+                Destroy(gameObject);
                 break;
+               
         }
     }
 }

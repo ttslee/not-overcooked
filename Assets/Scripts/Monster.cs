@@ -91,12 +91,10 @@ public class Monster : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision) // Pick up the correct item
     {
-        print(collision.name);
         if (!HasRecipe)
             return;
         if(collision.name == recipe[currentItem])
         {
-            print("CALLED");
             NumItemsLeft -= 1;
             currentItem++;
             animator.SetTrigger("Chomp");
