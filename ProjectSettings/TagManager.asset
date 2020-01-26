@@ -8,6 +8,10 @@ TagManager:
   - Player2
   - Item
   - Monster
+  - Fire
+  - Death
+  - Wall
+  - Resource
   layers:
   - Default
   - TransparentFX
